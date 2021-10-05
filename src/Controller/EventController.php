@@ -7,16 +7,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class MainController extends AbstractController
+class EventController extends AbstractController
 {
     /**
-     * @Route("/", name="home")
+     * @Route("/event", name="event")
      */
     public function index(EventRepository $eventRepository): Response
     {
-        $events = $eventRepository->findBy([], ['startedAt' => 'ASC'], '3' );
+        $events = $eventRepository->findAll();
 
-        return $this->render('main/index.html.twig', [
+        return $this->render('event/index.html.twig', [
             'events' => $events,
         ]);
     }

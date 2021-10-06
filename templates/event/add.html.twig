@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajoutez un événement{% endblock %}
+
+{% block body %}
+    <div class="container">
+
+    <h1>Ajoutez un événement</h1>
+
+    {{ form(addEventForm) }}
+    <a class="btn halfway-fab waves-effect waves-light red" href="{{ path('event') }}">Retour aux articles</a>
+
+    </div>
+
+{% endblock %}

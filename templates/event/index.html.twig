@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EventController!{% endblock %}
+
+{% block body %}
+<div class="container">
+    <a href="{{ path('event_add') }}"><i class="material-icons  btn-floating center-align hoverable pulse">add</i></a>
+    <div class="row">
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% for event in events %}
+            {% include 'includes/_cards_event.html.twig' %}
+    {% endfor%}
+
+    </div>
+</div>
+{% endblock %}

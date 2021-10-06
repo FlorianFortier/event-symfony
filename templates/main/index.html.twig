@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Event Site{% endblock %}
+
+{% block body %}
+    <div class="container">
+        {% for event in events %}
+        <div class="row">
+            <div class="col s12 m5 l4">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/id/1003/1181/1772">
+                        <span class="card-title">{{ event.name }}
+                         <div class="collection">
+                            <a href="#!" class="collection-item"><span class="badge">{{ event.placeNumber }}</span>Place</a>
+                          </div>
+                        </span>
+                        <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+                    </div>
+                    <div class="card-content">
+                        {{ event.startedAt | date('d/m/Y') }} - {{ event.endedAt | date('d/m/Y')}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor%}
+    {{ dump(events) }}
+    </div>
+{% endblock %}

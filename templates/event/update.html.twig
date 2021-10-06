@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajoutez un événement{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>modifier {{ eventName }}</h1>
+        <hr>
+
+        {{ form(updateEventForm) }}
+    </div>
+{% endblock %}

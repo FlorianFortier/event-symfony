@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Show event page {% endblock %}
+
+{% block body %}
+    <div class="container">
+    <h1>{{ event.name }}</h1>
+    <hr>
+    <div class="row">
+        <div class="col">
+            <div class="s6 m4 l3">
+                <img src="{{ event.image }}" alt="image {{ event.name }}" class="responsive-img">
+            </div>
+            <div class="">
+                <p class="">{{ event.description }}</p>
+                <p class="">{{ event.placeNumber }} - Places</p>
+                <p class=""> A partir de {{ event.startedAt | date ('d/m/Y') }}</p>
+                <p class=""> Jusqu'au {{ event.endedAt | date ('d/m/Y') }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -4,37 +4,17 @@
 
 {% block body %}
 <div class="container">
+    <a href="{{ path('event_add') }}"><i class="material-icons  btn-floating center-align hoverable pulse">add</i></a>
     <div class="row">
-    {% for event in events %}
-            <div class="col s6">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="{{ event.image }}">
-                        <span class="card-title">{{ event.name }}
-                         <div class="collection">
-                            <a href="#!" class="collection-item"><span class="badge">{{ event.placeNumber }}</span>Place</a>
-                          </div>
-                        </span>
-                        <a class="btn-floating halfway-fab waves-effect waves-light btn red modal-trigger" href="#modal1"><i class="material-icons">add</i></a>
-                    </div>
-                    <!-- Modal Structure -->
-                    <div id="modal1" class="modal">
-                        <div class="modal-content">
-                            <h4>{{ event.name }}</h4>
-                            <p>{{ event.description }}</p>
-                            <p>{{ event.startedAt | date('d/m/Y') }} - {{ event.endedAt | date('d/m/Y')}}</p>
-                        </div>
-                        <div class="modal-footer">
-                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        {{ event.startedAt | date('d/m/Y') }} - {{ event.endedAt | date('d/m/Y')}}
-                    </div>
-                    <script>  M.AutoInit();</script>
-                </div>
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
             </div>
+        {% endfor %}
+    {% for event in events %}
+            {% include 'includes/_cards_event.html.twig' %}
     {% endfor%}
+
     </div>
 </div>
 {% endblock %}

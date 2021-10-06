@@ -86,7 +86,6 @@ class EventController extends AbstractController
 
         $this->addFlash('success', $delete);
         return $this->redirectToRoute('event');
-
     }
 
 

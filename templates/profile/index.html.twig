@@ -7,13 +7,23 @@
         <h1>{{ app.user.firstname }} {{ app.user.lastname }}</h1>
 
         <hr>
+        <h2>Mon profil</h2>
 
-        <div class="row">
+        <section class="row">
             <ul>
                 <li><strong>Prénom</strong>: {{ app.user.firstname }}</li>
                 <li><strong>Nom</strong>: {{ app.user.lastname }}</li>
                 <li><strong>Mail</strong>: {{ app.user.email }}</li>
             </ul>
-        </div>
+        </section>
+        <hr>
+        <section class="row">
+            <h2>mes évenements</h2>
+            <ul>
+            {% for participation in participation_list %}
+                {% include "includes/_cards_event.html.twig" with {'event': participation.event, 'profile': true} %}
+            {% endfor %}
+            </ul>
+        </section>
     </div>
 {% endblock %}

@@ -109,7 +109,7 @@ class EventController extends AbstractController
      * @Route("/event/{event}/participate", name="event_participate")
      * @IsGranted("ROLE_USER")
      */
-    public function participate(Event $event, Request $request)
+    public function participate(Event $event, Request $request, EntityManagerInterface $em)
     {
         $participation = new Participation();
         $participation->setEvent($event)
@@ -117,7 +117,12 @@ class EventController extends AbstractController
         $eventParticipationForm = $this->createForm(ParticipationType::class, $participation);
 
         $eventParticipationForm->handleRequest($request);
+        if ($eventParticipationForm->isSubmitted() && $eventParticipationForm->isValid()) {
 
+            $participation = $eventParticipationForm->getData();
+            $em->persist($participation);
+            $em->flush();
+        }
         return $this->render('event/participate.html.twig', [
             'event_participation_form' => $eventParticipationForm->createView()
         ]);

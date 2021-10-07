@@ -14,6 +14,7 @@
             <a class="btn-floating halfway-fab waves-effect waves-light btn red modal-trigger" href="#modal1">
                 <i class="material-icons">add</i>
             </a>
+            <a href="" class="btn-floating halfway-fab waves-effect waves-light btn red modal-trigger"></a>
             <a class="btn halfway-fab waves-effect waves-light red" href="{{ path('event_show', {'event': event.id}) }}">Article</a>
             {% if is_granted('ROLE_CONTRIBUTOR') %}
             <a class="btn halfway-fab waves-effect waves-light red" href="{{ path('event_delete', {'event': event.id}) }}" onclick="M.toast({html: 'Message supprimé'}); ">delete</a>

@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Event;
+use App\Entity\Participation;
 use App\Form\EventType;
+use App\Form\ParticipationType;
 use App\Repository\EventRepository;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
@@ -101,5 +103,23 @@ class EventController extends AbstractController
         return $this->render('event/show.html.twig', [
             'event' => $event
     ]);
+    }
+
+    /**
+     * @Route("/event/{event}/participate", name="event_participate")
+     * @IsGranted("ROLE_USER")
+     */
+    public function participate(Event $event, Request $request)
+    {
+        $participation = new Participation();
+        $participation->setEvent($event)
+            ->setUser($this->getUser());
+        $eventParticipationForm = $this->createForm(ParticipationType::class, $participation);
+
+        $eventParticipationForm->handleRequest($request);
+
+        return $this->render('event/participate.html.twig', [
+            'event_participation_form' => $eventParticipationForm->createView()
+        ]);
     }
 }

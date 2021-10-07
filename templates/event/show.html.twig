@@ -18,6 +18,17 @@
                 <p class=""> Jusqu'au {{ event.endedAt | date ('d/m/Y') }}</p>
             </div>
         </div>
+        <div class="row">
+            <h2>evaluations</h2>
+            {% for evaluation in evaluations %}
+            <figure>
+                <blockquote class="blockquote">
+                    {{ evaluation.comment }}
+                    {{ evaluation.ratings }}
+                </blockquote>
+            </figure>
+            {% endfor %}
+        </di
+</div>v>
     </div>
-</div>
 {% endblock %}

@@ -4,7 +4,9 @@
 
 {% block body %}
 <div class="container">
+    {%  if is_granted('ROLE_ADMIN') %}
     <a href="{{ path('event_add') }}"><i class="material-icons  btn-floating center-align hoverable pulse">add</i></a>
+    {% endif  %}
     <div class="row">
         {% for message in app.flashes('success') %}
             <div class="alert alert-success">

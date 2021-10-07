@@ -47,4 +47,7 @@ class ParticipationRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function findByUser(?\Symfony\Component\Security\Core\User\UserInterface $getUser)
+    {
+    }
 }

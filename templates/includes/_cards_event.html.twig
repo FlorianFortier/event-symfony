@@ -15,8 +15,12 @@
                 <i class="material-icons">add</i>
             </a>
             <a class="btn halfway-fab waves-effect waves-light red" href="{{ path('event_show', {'event': event.id}) }}">Article</a>
+            {% if is_granted('ROLE_CONTRIBUTOR') %}
             <a class="btn halfway-fab waves-effect waves-light red" href="{{ path('event_delete', {'event': event.id}) }}" onclick="M.toast({html: 'Message supprimé'}); ">delete</a>
+            {% endif %}
+            {% if is_granted('ROLE_ADMIN') %}
             <a class="btn halfway-fab waves-effect waves-light red" href="{{ path('event_update', {'event': event.id}) }}">edit</a>
+            {% endif %}
 
 
         </div>

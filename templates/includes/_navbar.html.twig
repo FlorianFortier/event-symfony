@@ -4,8 +4,19 @@
         <ul class="right hide-on-med-and-down">
             <li><a href="sass.html"><i class="material-icons">search</i></a></li>
             <li><a href="{{ path('event') }}"><i class="material-icons">view_module</i></a></li>
-            <li><a href="collapsible.html"><i class="material-icons">refresh</i></a></li>
             <li><a href="mobile.html"><i class="material-icons">more_vert</i></a></li>
+            <li>
+                {% if(app.user) %}
+                <a href="{{ path('app_logout') }}" class=""><i class="material-icons">account_circle</i></a>
+                {% else %}
+                <a href="{{ path('app_login') }}"><i class="material-icons">account_circle</i></a>
+                {% endif %}
+            </li>
+            <li>
+                {% if(app.user) %}
+                <a href="{{ path('profile') }}"><i class="material-icons">account_box</i></a>
+                {% endif %}
+            </li>
         </ul>
     </div>
 </nav>
